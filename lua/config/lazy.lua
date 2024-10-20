@@ -20,7 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 --  To update plugins you can run
 --    :Lazy update
 --
--- NOTE: You can now install your plugins by writing its spec in lua/plugins/<plugin>,lua
+-- NOTE: You can now install your plugins by writing its spec in lua/plugins/<plugin>.lua
 require('lazy').setup {
   spec = {
     --import plugins
