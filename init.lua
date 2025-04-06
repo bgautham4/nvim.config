@@ -86,7 +86,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 require 'config.opts'
 require 'config.remaps'
 require 'config.autocommands'
-require 'config.lazy'
+require 'config.lazy_setup'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
