@@ -10,6 +10,8 @@ return {
         markdown = { 'markdownlint'
         },
         Disable markdownlint --]]
+        -- lint shell scripts using shellcheck
+        sh = { 'shellcheck' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,
