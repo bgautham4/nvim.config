@@ -28,6 +28,7 @@ return {
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
+          -- helper for creating mappings
           local map = function(keys, func, desc, mode)
             mode = mode or 'n'
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -121,7 +122,8 @@ return {
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       -- Enable the following language servers
-      --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
+      -- Add servers which you want to use here. Ensure that the langage server is available and is
+      -- accessible by neovim
       --
       --  Add any additional override configuration in the following tables. Available keys are:
       --  - cmd (table): Override the default command used to start the server
@@ -156,12 +158,17 @@ return {
             },
           },
         },
+        texlab = {},
       }
       --Setup language servers specified in servers^
       local lspconfig = require 'lspconfig'
       for server, opts in pairs(servers) do
         lspconfig[server].setup(opts)
       end
+      -- Show inline diagnostic as virtual text
+      vim.diagnostic.config {
+        virtual_text = true,
+      }
     end,
   },
 }
